@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { addEvent, deleteEvent, setEvents } from './redux/actions/eventActions';
+import Home from './pages/Home';
+import CreateEvent from './pages/CreateEvent';
+import EventDetails from './pages/EventDetails';
 
 function App() {
+  const events = useSelector(state => state.events.events);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const savedEvents = localStorage.getItem('events');
+    if (savedEvents) {
+      dispatch(setEvents(JSON.parse(savedEvents)));
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    localStorage.setItem('events', JSON.stringify(events));
+  }, [events]);
+
+  const handleAddEvent = (eventData) => {
+    dispatch(addEvent(eventData));
+  };
+
+  const handleDeleteEvent = (id) => {
+    dispatch(deleteEvent(id));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home events={events} />} />
+        <Route path="/create-event" element={<CreateEvent addEvent={handleAddEvent} events={events} />} />
+        <Route path="/create-event/:id" element={<CreateEvent addEvent={handleAddEvent} events={events} />} />
+        <Route path="/event/:id" element={<EventDetails events={events} deleteEvent={handleDeleteEvent} />} />
+      </Routes>
+    </Router>
   );
 }
 
