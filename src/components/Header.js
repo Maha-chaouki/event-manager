@@ -1,13 +1,12 @@
 import React from 'react';
+import { IoLogIn } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-/* ===== Header Container ===== */
 const HeaderContainer = styled.header`
   position: sticky;
   top: 0;
   z-index: 1000;
-
   background-color: #e1e1e6ba;
   backdrop-filter: blur(6px);
 
@@ -24,24 +23,17 @@ const HeaderContainer = styled.header`
     gap: 1rem;
   }
 `;
-
-/* ===== Logo ===== */
 const Logo = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
 `;
-
 const LogoImg = styled.img`
   width: 200px;
   height: 45px;
   object-fit: contain;
 `;
-
-
-/* ===== Navigation ===== */
 const Nav = styled.nav``;
-
 const NavList = styled.ul`
   list-style: none;
   display: flex;
@@ -54,10 +46,7 @@ const NavList = styled.ul`
     gap: 0.5rem;
   }
 `;
-
 const NavItem = styled.li``;
-
-/* ===== Links ===== */
 const NavLink = styled(Link)`
   color: #0f0c0cff;
   text-decoration: none;
@@ -82,7 +71,7 @@ const NavLink = styled(Link)`
   }
 `;
 
-/* ===== Button (Se connecter) ===== */
+
 const NavButton = styled.button`
   background: none;
   border: none;
@@ -103,8 +92,8 @@ const NavButton = styled.button`
   }
 `;
 
-/* ===== Component ===== */
-const Header = ({ onLoginClick = () => {} }) => {
+const Header = ({})=> {
+
   return (
     <HeaderContainer>
       <Logo>
@@ -119,7 +108,7 @@ const Header = ({ onLoginClick = () => {} }) => {
           </NavItem>
 
           <NavItem>
-            <NavButton onClick={onLoginClick}>
+            <NavButton >
               Sign In
             </NavButton>
           </NavItem>
@@ -134,5 +123,4 @@ const Header = ({ onLoginClick = () => {} }) => {
     </HeaderContainer>
   );
 };
-
 export default Header;

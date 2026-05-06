@@ -11,6 +11,7 @@ const EventCard = ({ event }) => {
       transition: 'transform 0.3s ease, box-shadow 0.3s ease',
       cursor: 'pointer',
       maxWidth: '320px',
+  
       margin: '0 auto'
     }}
     onMouseEnter={(e) => {
@@ -21,17 +22,7 @@ const EventCard = ({ event }) => {
       e.currentTarget.style.transform = 'translateY(0)';
       e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
     }}>
-      {event.image && (
-        <Link to={`/event/${event.id}`} style={{ textDecoration: 'none' }}>
-          <img src={event.image} alt={event.title} style={{
-            width: '100%',
-            height: '150px',
-            objectFit: 'cover',
-            borderTopLeftRadius: '12px',
-            borderTopRightRadius: '12px'
-          }} />
-        </Link>
-      )}
+      
       <div style={{ padding: '1.5rem' }}>
         <h3 style={{
           fontSize: '1.25rem',
@@ -42,7 +33,7 @@ const EventCard = ({ event }) => {
           display: 'flex',
           alignItems: 'center'
         }}>
-          ⭐ {event.title}
+           {event.title}
         </h3>
         <div style={{ marginBottom: '0.5rem' }}>
           <p style={{
@@ -52,7 +43,7 @@ const EventCard = ({ event }) => {
             display: 'flex',
             alignItems: 'center'
           }}>
-            📅 {event.date} at {event.time}
+             {event.date} at {event.time}
           </p>
           <p style={{
             fontSize: '0.9rem',
@@ -61,7 +52,7 @@ const EventCard = ({ event }) => {
             display: 'flex',
             alignItems: 'center'
           }}>
-            📍 {event.location}
+             {event.location}
           </p>
           <p style={{
             fontSize: '0.9rem',
@@ -70,7 +61,7 @@ const EventCard = ({ event }) => {
             display: 'flex',
             alignItems: 'center'
           }}>
-            💰 {event.price}
+             {event.price}
           </p>
         </div>
         <p style={{
@@ -94,9 +85,7 @@ const EventCard = ({ event }) => {
           fontSize: '0.9rem',
           fontWeight: '500',
           transition: 'background-color 0.3s'
-        }}
-        onMouseEnter={(e) => e.target.style.backgroundColor = '#45a049'}
-        onMouseLeave={(e) => e.target.style.backgroundColor = '#4CAF50'}>
+        }}>
           View Details
         </Link>
       </div>

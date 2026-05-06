@@ -4,13 +4,11 @@ import { useSelector } from 'react-redux';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
-
 const SliderWrapper = styled.div`
   width: 100vw;
   height: 80vh;
   margin: 0;
 `;
-
 const Slide = styled.div`
   height: 80vh;
   position: relative;
@@ -18,7 +16,6 @@ const Slide = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
 const SlideContent = styled.div`
   position: relative;
   z-index: 2;
@@ -27,15 +24,12 @@ const SlideContent = styled.div`
   padding-top: 120px;
   text-shadow: 0 2px 4px rgba(0,0,0,0.6);
 `;
-
 const SlideTitle = styled.h2`
   font-size: 3.5rem;
 `;
-
 const SlideDescription = styled.p`
   font-size: 2.2rem;
 `;
-
 const HeroSlider = () => {
   const slides = useSelector(state => state.heroImages.slides);
 
@@ -47,8 +41,6 @@ const HeroSlider = () => {
     slidesToShow: 1,
     slidesToScroll: 1
   };
-
-  
   return (
     <SliderWrapper>
       <Slider {...settings}>
